@@ -1,63 +1,64 @@
 import { useState, useEffect } from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
-import {toast} from 'react-toastify'
-import {register, reset} from '../features/auth/authSlice'
-import Spinner from '../components/Spinner'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { FaUser } from 'react-icons/fa'
+import { register, reset } from '../features/auth/authSlice'
+import Spinner from '../components/Spinner'
 
 function Register() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
-    password2: ''
+    password2: '',
   })
 
-  const {name, email, password, password2} = formData
+  const { name, email, password, password2 } = formData
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const {user, isLoading, isError, isSuccess, message} = useSelector((state) => state.auth)
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
 
   useEffect(() => {
-    if(isError) {
+    if (isError) {
       toast.error(message)
     }
 
-    if(isSuccess || user) {
+    if (isSuccess || user) {
       navigate('/')
     }
 
     dispatch(reset())
-
   }, [user, isError, isSuccess, message, navigate, dispatch])
 
-  function handleChange(e) {
+  const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }))
   }
 
-  function onSubmit(e) {
+  const onSubmit = (e) => {
     e.preventDefault()
 
-    if(password !== password2) {
+    if (password !== password2) {
       toast.error('Passwords do not match')
-    }else {
+    } else {
       const userData = {
         name,
         email,
-        password
+        password,
       }
 
       dispatch(register(userData))
     }
   }
 
-  if(isLoading) {
+  if (isLoading) {
     return <Spinner />
   }
 
@@ -67,48 +68,57 @@ function Register() {
         <h1>
           <FaUser /> Register
         </h1>
-        <p>Please Create an Account</p>
+        <p>Please create an account</p>
       </section>
-      <section>
+
+      <section className='form'>
         <form onSubmit={onSubmit}>
           <div className='form-group'>
-            <input className='form-control' 
-                   type='text' 
-                   name='name'
-                   id='name'
-                   placeholder='Enter Your Name'
-                   onChange={handleChange} 
-                   value={name}/>
+            <input
+              type='text'
+              className='form-control'
+              id='name'
+              name='name'
+              value={name}
+              placeholder='Enter your name'
+              onChange={onChange}
+            />
           </div>
           <div className='form-group'>
-            <input className='form-control' 
-                   type='email' 
-                   name='email'
-                   id='email'
-                   placeholder='Enter Your Email'
-                   onChange={handleChange} 
-                   value={email}/>
+            <input
+              type='email'
+              className='form-control'
+              id='email'
+              name='email'
+              value={email}
+              placeholder='Enter your email'
+              onChange={onChange}
+            />
           </div>
           <div className='form-group'>
-            <input className='form-control' 
-                   type='text' 
-                   name='password'
-                   id='password'
-                   placeholder='Enter Your Password'
-                   onChange={handleChange} 
-                   value={password}/>
+            <input
+              type='password'
+              className='form-control'
+              id='password'
+              name='password'
+              value={password}
+              placeholder='Enter password'
+              onChange={onChange}
+            />
           </div>
           <div className='form-group'>
-            <input className='form-control' 
-                   type='text' 
-                   name='password2'
-                   id='password2'
-                   placeholder='Confirm Your Password'
-                   onChange={handleChange} 
-                   value={password2}/>
+            <input
+              type='password'
+              className='form-control'
+              id='password2'
+              name='password2'
+              value={password2}
+              placeholder='Confirm password'
+              onChange={onChange}
+            />
           </div>
           <div className='form-group'>
-            <button className='btn btn-block' type='submit'>
+            <button type='submit' className='btn btn-block'>
               Submit
             </button>
           </div>
