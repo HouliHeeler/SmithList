@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { login, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
+import logo from '../app/images/logoblack.svg'
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -58,6 +59,7 @@ function Login() {
     <>
       <section className='form'>
         <form onSubmit={onSubmit}>
+          <img src={logo} alt="Smithlist Logo" />
           <div className='form-group'>
             <input
               type='email'

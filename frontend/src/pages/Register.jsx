@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { register, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
+import logo from '../app/images/logoblack.svg'
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -65,6 +66,7 @@ function Register() {
     <>
       <section className='form'>
         <form onSubmit={onSubmit}>
+          <img src={logo} alt="Smithlist Logo" />
           <div className='form-group'>
             <input
               type='text'

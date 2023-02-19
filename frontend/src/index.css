@@ -7,7 +7,7 @@
 }
 
 html {
-  background: url('./app/images/bg1.jpg') no-repeat center center fixed; 
+  background: url('./app/images/bg3.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -122,14 +122,18 @@ h3 {
 
 .form,
 .content {
-  background-color: white;
+  background-image: linear-gradient(45deg, #41E296, #00C4EE);
   display: flex;
   justify-content: center;
   width: 40%;
   margin: 0 auto;
   padding: 3rem;
-  border: 1px solid white;
   border-radius: 10px;
+  box-shadow: 4px 5px rgb(0, 0, 0);
+}
+
+.form > form > img {
+  margin-bottom: 2rem;
 }
 
 input, input:focus
@@ -188,6 +192,10 @@ input, input:focus
   margin: 1rem;
 }
 
+.form-submit > span:hover {
+  text-decoration: underline;
+}
+
 .btn {
   padding: 10px 20px;
   border: 2px solid black;
@@ -215,7 +223,7 @@ input, input:focus
 }
 
 .btn-block {
-  width: 40%;
+  width: 60%;
   background-color: black;
   color: white;
 }
