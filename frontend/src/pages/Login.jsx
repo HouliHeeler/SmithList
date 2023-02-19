@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import { FaSignInAlt } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { login, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
@@ -57,42 +56,39 @@ function Login() {
 
   return (
     <>
-      <section className='heading'>
-        <h1>
-          <FaSignInAlt /> Login
-        </h1>
-        <p>Login and start setting goals</p>
-      </section>
-
       <section className='form'>
         <form onSubmit={onSubmit}>
           <div className='form-group'>
             <input
               type='email'
-              className='form-control'
+              className='form-input'
               id='email'
               name='email'
               value={email}
-              placeholder='Enter your email'
+              placeholder='Email'
               onChange={onChange}
             />
           </div>
           <div className='form-group'>
             <input
               type='password'
-              className='form-control'
+              className='form-input'
               id='password'
               name='password'
               value={password}
-              placeholder='Enter password'
+              placeholder='Password'
               onChange={onChange}
             />
           </div>
-
-          <div className='form-group'>
+          <div className='form-submit'>
             <button type='submit' className='btn btn-block'>
-              Submit
+              Login
             </button>
+            <span>
+              <Link to='/register'>
+                Register
+              </Link>
+            </span>
           </div>
         </form>
       </section>

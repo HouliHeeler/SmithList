@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { FaUser } from 'react-icons/fa'
 import { register, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
 
@@ -64,13 +63,6 @@ function Register() {
 
   return (
     <>
-      <section className='heading'>
-        <h1>
-          <FaUser /> Register
-        </h1>
-        <p>Please create an account</p>
-      </section>
-
       <section className='form'>
         <form onSubmit={onSubmit}>
           <div className='form-group'>
@@ -80,7 +72,7 @@ function Register() {
               id='name'
               name='name'
               value={name}
-              placeholder='Enter your name'
+              placeholder='Name'
               onChange={onChange}
             />
           </div>
@@ -91,7 +83,7 @@ function Register() {
               id='email'
               name='email'
               value={email}
-              placeholder='Enter your email'
+              placeholder='Email'
               onChange={onChange}
             />
           </div>
@@ -102,7 +94,7 @@ function Register() {
               id='password'
               name='password'
               value={password}
-              placeholder='Enter password'
+              placeholder='Password'
               onChange={onChange}
             />
           </div>
@@ -113,14 +105,19 @@ function Register() {
               id='password2'
               name='password2'
               value={password2}
-              placeholder='Confirm password'
+              placeholder='Confirm Password'
               onChange={onChange}
             />
           </div>
-          <div className='form-group'>
+          <div className='form-submit'>
             <button type='submit' className='btn btn-block'>
-              Submit
+              Register
             </button>
+            <span>
+              <Link to='/login'>
+                Login
+              </Link>
+            </span>
           </div>
         </form>
       </section>
