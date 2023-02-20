@@ -15,9 +15,9 @@ function GoalForm() {
   }
 
   return (
-    <section className='form'>
+    <section className='recipe'>
       <form onSubmit={onSubmit}>
-        <div className='form-group'>
+        <div className='recipe-group'>
           <label htmlFor='text'>Goal</label>
           <input
             type='text'
@@ -27,9 +27,9 @@ function GoalForm() {
             onChange={(e) => setText(e.target.value)}
           />
         </div>
-        <div className='form-group'>
+        <div className='recipe-group'>
           <button className='btn btn-block' type='submit'>
-            Add Goal
+            Add Recipe
           </button>
         </div>
       </form>

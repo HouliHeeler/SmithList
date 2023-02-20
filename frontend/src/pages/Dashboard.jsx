@@ -50,7 +50,9 @@ function Dashboard() {
           <span>You haven't chosen any meals!</span>
         )}
       </section>
-      <GoalForm />
+      <section>
+        <GoalForm />
+      </section>
     </main>
   )
 }
