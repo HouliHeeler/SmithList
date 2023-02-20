@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import GoalForm from '../components/GoalForm'
 import GoalItem from '../components/GoalItem'
 import Spinner from '../components/Spinner'
+import Header from '../components/Header'
 import { getGoals, reset } from '../features/goals/goalSlice'
 
 function Dashboard() {
@@ -37,6 +38,7 @@ function Dashboard() {
 
   return (
     <>
+      <Header />
       <section className='heading'>
         <h1>Welcome {user && user.name}</h1>
         <p>Goals Dashboard</p>
