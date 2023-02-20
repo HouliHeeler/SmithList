@@ -1,15 +1,18 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import GoalForm from '../components/GoalForm'
 import GoalItem from '../components/GoalItem'
 import Spinner from '../components/Spinner'
 import Header from '../components/Header'
+import RecipeList from '../components/RecipeList'
 import { getGoals, reset } from '../features/goals/goalSlice'
 
 function Dashboard() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const [chosenRecipe, setChosenRecipe] = useState('')
 
   const { user } = useSelector((state) => state.auth)
   const { goals, isLoading, isError, message } = useSelector(
@@ -51,10 +54,8 @@ function Dashboard() {
         )}
       </section>
       <section className='recipe-block'>
-        <GoalForm />
-        <section className='recipe-list'>
-          <span>Recipes Here</span>
-        </section>
+        <GoalForm chosenRecipe={chosenRecipe}/>
+        <RecipeList setChosenRecipe={setChosenRecipe}/>
       </section>
     </main>
   )

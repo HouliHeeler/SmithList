@@ -144,38 +144,6 @@ ul {
   margin: 0 .5rem 0 0;
 }
 
-.recipe-block {
-  display: flex;
-  justify-content: space-between;
-  width: 99vw;
-  height: calc(100% - (10rem));
-}
-
-.recipe-list, .recipe {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  height: auto;
-  background-image: linear-gradient(45deg, #41E296, #00C4EE);
-  border-radius: 5px;
-}
-
-.recipe {
-  width: calc(70% - 5px);
-}
-
-.recipe > form {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px;
-}
-
-.recipe > form > button {
-  border-radius: 5px;
-  margin: 0;
-}
-
 .form {
   background-image: linear-gradient(45deg, #41E296, #00C4EE);
   display: flex;
@@ -227,6 +195,103 @@ input, input:focus
 
 .form-submit > span:hover {
   text-decoration: underline;
+}
+
+.recipe-block {
+  display: flex;
+  justify-content: space-between;
+  width: 99vw;
+  height: calc(100% - (10rem));
+}
+
+.recipe-list, .recipe {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: auto;
+  background-image: linear-gradient(45deg, #41E296, #00C4EE);
+  border-radius: 5px;
+}
+
+.recipe {
+  width: calc(70% - 5px);
+}
+
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  background-color: white;
+  padding: .5rem;
+  margin: .5rem;
+}
+
+.recipe-header > button {
+  border-radius: 5px;
+  margin: 0;
+  padding: 0.25rem;
+}
+
+.recipe-name {
+  font-size: 1.75rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.recipe-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.recipe-box {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  width: 95%;
+  height: calc(100% - (1.5rem));
+  margin: 5px;
+  overflow-x: scroll;
+}
+
+.recipe-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  text-indent: 5px;
+  background-image: linear-gradient(45deg, #41E296, #00C4EE);
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.recipe-item:hover {
+  height: 2rem;
+  font-weight: 700;
+  border: 1px solid black;
+}
+
+.recipe-item:last-child {
+  border-radius: 0 0 5px 5px;
+}
+
+.recipe-item:first-child {
+  border-radius: 5px 5px 0 0;
+}
+
+.recipe-search, .recipe-search:focus {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  outline: none;
+  height: 2rem;
+  width: 95%;
+  margin: 5px;
 }
 
 
