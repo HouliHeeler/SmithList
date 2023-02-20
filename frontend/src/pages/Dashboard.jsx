@@ -50,8 +50,11 @@ function Dashboard() {
           <span>You haven't chosen any meals!</span>
         )}
       </section>
-      <section>
+      <section className='recipe-block'>
         <GoalForm />
+        <section className='recipe-list'>
+          <span>Recipes Here</span>
+        </section>
       </section>
     </main>
   )

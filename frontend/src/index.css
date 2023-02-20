@@ -22,6 +22,28 @@ a {
   text-decoration: none;
 }
 
+.btn {
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+  background: #000;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.btn:hover {
+  transform: scale(0.98);
+}
+
 ul {
   list-style: none;
 }
@@ -49,6 +71,7 @@ ul {
 
 .header {
   width: 99vw;
+  height: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -121,6 +144,38 @@ ul {
   margin: 0 .5rem 0 0;
 }
 
+.recipe-block {
+  display: flex;
+  justify-content: space-between;
+  width: 99vw;
+  height: calc(100% - (10rem));
+}
+
+.recipe-list, .recipe {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: auto;
+  background-image: linear-gradient(45deg, #41E296, #00C4EE);
+  border-radius: 5px;
+}
+
+.recipe {
+  width: calc(70% - 5px);
+}
+
+.recipe > form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.recipe > form > button {
+  border-radius: 5px;
+  margin: 0;
+}
+
 .form {
   background-image: linear-gradient(45deg, #41E296, #00C4EE);
   display: flex;
@@ -174,24 +229,4 @@ input, input:focus
   text-decoration: underline;
 }
 
-.btn {
-  padding: 10px 20px;
-  border: 2px solid black;
-  border-radius: 20px;
-  background: #000;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  text-align: center;
-  appearance: button;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1rem;
-}
 
-.btn:hover {
-  transform: scale(0.98);
-}
