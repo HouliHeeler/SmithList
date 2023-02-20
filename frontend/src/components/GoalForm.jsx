@@ -3,7 +3,7 @@ import { createGoal } from '../features/goals/goalSlice'
 
 function GoalForm(props) {
   // const [text, setText] = useState('')
-  const text = props.chosenRecipe
+  const text = props.chosenRecipe['name']
 
   const dispatch = useDispatch()
 
@@ -18,11 +18,14 @@ function GoalForm(props) {
     <section className='recipe'>
       <div className='recipe-header'>
         <div className='recipe-name'>
-          <span>{props.chosenRecipe}</span>
+          <span>{props.chosenRecipe["name"]}</span>
         </div>
         <button className='btn btn-block' type='submit' onClick={handleClick}>
           Add Recipe
         </button>
+      </div>
+      <div className='recipe-image'>
+        <img src={props.chosenRecipe["thumbnail_url"]} alt={props.chosenRecipe["name"]} />
       </div>
     </section>
   )

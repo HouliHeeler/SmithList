@@ -130,6 +130,7 @@ ul {
   border-bottom: .25px solid black;
   margin: 0 .5rem;
   padding: .25rem 1rem;
+  background-color: white;
 }
 
 .meal-block > span {
@@ -233,6 +234,20 @@ input, input:focus
   padding: 0.25rem;
 }
 
+.recipe-image {
+  height: 15rem;
+  width: 15rem;
+  margin: .5rem;
+}
+
+.recipe-image > img {
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  object-fit: fill;
+}
+
 .recipe-name {
   font-size: 1.75rem;
   text-align: center;
@@ -258,10 +273,23 @@ input, input:focus
   overflow-x: scroll;
 }
 
+.recipe-cuisines, .recipe-cuisines:focus {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  margin: .5rem 5px 0 5px;
+  font-weight: 600;
+  outline: none;
+  width: 95%;
+}
+
 .recipe-item {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin: 2px;
   padding: 2px;
   text-indent: 5px;
@@ -284,14 +312,28 @@ input, input:focus
   border-radius: 5px 5px 0 0;
 }
 
+.recipe-search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+}
+
 .recipe-search, .recipe-search:focus {
   border: 1px solid black;
   border-radius: 5px;
   background-color: white;
   outline: none;
   height: 2rem;
-  width: 95%;
-  margin: 5px;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.recipe-search-button {
+  position: absolute;
+  right: 1.25rem;
+  cursor: pointer;
 }
 
 
