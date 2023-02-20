@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
+import logo from '../app/images/logoblack.svg'
 
 function Header() {
   const navigate = useNavigate()
@@ -15,8 +16,9 @@ function Header() {
   return (
     <header className='header'>
       <div>
-        <Link to='/' className='header-link'>GoalSetter</Link>
+        <Link to='/' className='header-link'>Recipes</Link>
       </div>
+      <img src={logo} alt="SmithList Logo" />
       <button className='header-btn' onClick={onLogout}>
         Logout
       </button>
