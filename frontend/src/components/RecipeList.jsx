@@ -68,16 +68,19 @@ function RecipeList(props) {
               onChange={onChange}
               className="recipe-cuisines"/>
             <div className="recipe-box">
-                {filteredList.map((recipe) => (
-                  <div 
-                    className='recipe-item' 
-                    key={recipe.id}
-                    value={recipe.name}
-                    onClick={() => props.setChosenRecipe(recipe)}
-                    >
-                        {recipe.name}
-                  </div>
-                ))}
+                {filteredList.length < 1 ? 
+                  <div className='blank-message'>Pick a cuisine and search for what you're dying to try!</div>: 
+                  filteredList.map((recipe) => (
+                    <div 
+                      className='recipe-item' 
+                      key={recipe.id}
+                      value={recipe.name}
+                      onClick={() => props.setChosenRecipe(recipe)}
+                      >
+                          {recipe.name}
+                    </div>
+                  ))
+                }
             </div>
             <div className='recipe-search-bar'>
               <input 

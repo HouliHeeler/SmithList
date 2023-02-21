@@ -1,13 +1,18 @@
 import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { createGoal } from '../features/goals/goalSlice'
+import cereal from '../app/images/cereal.jpg'
 
 function GoalForm({chosenRecipe}) {
   // const [text, setText] = useState('')
-  const text = chosenRecipe['name']
+  let text = 'Cereal'
 
-  let instructions = ''
-  let ingredients = ''
+  if(chosenRecipe["name"] !== undefined) {
+    text = chosenRecipe['name']
+  }
+
+  let instructions = 'Add Milk. Enjoy.'
+  let ingredients = 'One family sized box of your preferred cereal. One quart of milk'
 
   if(chosenRecipe['instructions'] !== undefined) {
     instructions = chosenRecipe['instructions'].map((step, i) => {
@@ -29,9 +34,7 @@ function GoalForm({chosenRecipe}) {
 
   const handleClick = (e) => {
     e.preventDefault()
-
     dispatch(createGoal({ text }))
-    // setText('')
   }
 
   function toggle(bool) {
@@ -42,7 +45,7 @@ function GoalForm({chosenRecipe}) {
     <section className='recipe'>
       <div className='recipe-header'>
         <div className='recipe-name'>
-          <span>{chosenRecipe["name"]}</span>
+          <span>{chosenRecipe === '' ? "Cereal" : chosenRecipe["name"]}</span>
         </div>
         <button className='btn btn-block' type='submit' onClick={handleClick}>
           Add Recipe
@@ -50,7 +53,7 @@ function GoalForm({chosenRecipe}) {
       </div>
       <section className='recipe-blurb'>
         <div className='recipe-image'>
-          <img src={chosenRecipe["thumbnail_url"]} alt={chosenRecipe["name"]} />
+          <img src={chosenRecipe === '' ? cereal : chosenRecipe["thumbnail_url"]} alt={chosenRecipe["name"]} />
         </div>
         <section className='recipe-information'>
           <div className='recipe-toggle'>
