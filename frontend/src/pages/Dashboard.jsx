@@ -54,7 +54,7 @@ function Dashboard() {
         )}
       </section>
       <section className='recipe-block'>
-        <GoalForm chosenRecipe={chosenRecipe}/>
+        <GoalForm chosenRecipe={chosenRecipe} goals={goals} />
         <RecipeList setChosenRecipe={setChosenRecipe}/>
       </section>
     </main>

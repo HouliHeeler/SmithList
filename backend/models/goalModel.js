@@ -7,10 +7,24 @@ const goalSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
-    text: {
-      type: String,
-      required: [true, 'Please add a text value'],
-    },
+    text: [{
+      recipe: {
+        type: String,
+        required: [true, 'No Name Found'],
+      },
+      instructions: {
+        type: Array,
+        required: [true, 'No Instructions Found'],
+      },
+      ingredients: {
+        type: Array,
+        required: [true, 'No Ingredients Found'],
+      },
+      image: {
+        type: String,
+        required: [true, 'No Image URL Found'],
+      },
+    }],   
   },
   {
     timestamps: true,

@@ -9,7 +9,7 @@ function GoalItem({ goal }) {
       <button onClick={() => dispatch(deleteGoal(goal._id))} className='close'>
         x
       </button>
-      <span>{goal.text}</span>
+      <span>{goal["text"][0].recipe}</span>
     </div>
   )
 }

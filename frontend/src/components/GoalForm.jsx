@@ -1,15 +1,25 @@
 import { useDispatch } from 'react-redux'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { createGoal } from '../features/goals/goalSlice'
 import cereal from '../app/images/cereal.jpg'
 
 function GoalForm({chosenRecipe}) {
-  // const [text, setText] = useState('')
-  let text = 'Cereal'
 
-  if(chosenRecipe["name"] !== undefined) {
-    text = chosenRecipe['name']
-  }
+  const [text, setText] = useState({
+    recipe: '',
+    instructions: [],
+    ingredients: [],
+    image: ''
+  })
+
+  useEffect(() => {
+    setText({
+      recipe: chosenRecipe["name"],
+      instructions: chosenRecipe["instructions"],
+      ingredients: chosenRecipe["sections"],
+      image: chosenRecipe["thumbnail_url"]
+    })
+  }, [chosenRecipe])
 
   let instructions = 'Add Milk. Enjoy.'
   let ingredients = 'One family sized box of your preferred cereal. One quart of milk'
@@ -35,11 +45,14 @@ function GoalForm({chosenRecipe}) {
   const handleClick = (e) => {
     e.preventDefault()
     dispatch(createGoal({ text }))
+    console.log(text)
   }
 
   function toggle(bool) {
     setInformation(bool)
   }
+
+  const showButton = {display: chosenRecipe !== "" ? "block" : 'none'}
 
   return (
     <section className='recipe'>
@@ -47,7 +60,11 @@ function GoalForm({chosenRecipe}) {
         <div className='recipe-name'>
           <span>{chosenRecipe === '' ? "Cereal" : chosenRecipe["name"]}</span>
         </div>
-        <button className='btn btn-block' type='submit' onClick={handleClick}>
+        <button 
+          className='btn' 
+          type='submit' 
+          onClick={handleClick}
+          style={showButton}>
           Add Recipe
         </button>
       </div>
