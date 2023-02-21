@@ -234,9 +234,14 @@ input, input:focus
   padding: 0.25rem;
 }
 
+.recipe-blurb {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .recipe-image {
-  height: 15rem;
-  width: 15rem;
+  height: 20rem;
+  width: 20rem;
   margin: .5rem;
 }
 
@@ -248,10 +253,40 @@ input, input:focus
   object-fit: fill;
 }
 
+.recipe-information, .recipe-instructions {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+  gap: 1rem;
+  text-align: left;
+  max-width: 50%;
+  max-height: 20rem;
+  margin: .5rem;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.recipe-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.recipe-toggle > span {
+  cursor: pointer;
+}
+
+.recipe-instructions {
+  max-width: 100%;
+}
+
 .recipe-name {
   font-size: 1.75rem;
   text-align: center;
-  text-decoration: underline;
 }
 
 .recipe-items {

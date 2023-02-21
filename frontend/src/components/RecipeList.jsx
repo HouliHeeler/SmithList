@@ -13,7 +13,9 @@ function RecipeList(props) {
       return initialValue || []
     })
 
-    console.log(list)
+    const filteredList = list.filter(item => item['instructions'] !== undefined).filter(item => item["sections"] !== undefined)
+
+    console.log(filteredList)
 
     const cuisines = [
       {value: "indian", label: "Indian"},
@@ -66,7 +68,7 @@ function RecipeList(props) {
               onChange={onChange}
               className="recipe-cuisines"/>
             <div className="recipe-box">
-                {list.map((recipe) => (
+                {filteredList.map((recipe) => (
                   <div 
                     className='recipe-item' 
                     key={recipe.id}
