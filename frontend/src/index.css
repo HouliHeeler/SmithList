@@ -81,6 +81,12 @@ ul {
   background-image: linear-gradient(45deg, #41E296, #00C4EE);
 }
 
+.header > ul {
+  display: flex;
+  gap: .5rem;
+  width: 5rem;
+}
+
 .header > img {
   height: 2rem;
 }
@@ -95,6 +101,7 @@ ul {
   background-color: transparent;
   font-size: 1rem;
   cursor: pointer;
+  width: 5rem;
 }
 
 .meals {

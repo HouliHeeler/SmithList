@@ -8,7 +8,7 @@ function GoalForm({ chosenRecipe }) {
   const [text, setText] = useState({
     recipe: '',
     instructions: [],
-    ingredients: [],
+    sections: [],
     image: ''
   })
 
@@ -16,7 +16,7 @@ function GoalForm({ chosenRecipe }) {
     setText({
       recipe: chosenRecipe["name"],
       instructions: chosenRecipe["instructions"],
-      ingredients: chosenRecipe["sections"],
+      sections: chosenRecipe["sections"],
       image: chosenRecipe["thumbnail_url"]
     })
   }, [chosenRecipe])
@@ -29,7 +29,7 @@ function GoalForm({ chosenRecipe }) {
       return <div key={i}>{step['display_text']}</div>
     })
   }
-
+  
   if(chosenRecipe['sections'] !== undefined) {
     const componentArray = []
     chosenRecipe['sections'].map(section => section["components"].map(list => componentArray.push(list["raw_text"])))

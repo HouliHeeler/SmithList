@@ -16,7 +16,7 @@ const goalSchema = mongoose.Schema(
         type: Array,
         required: [true, 'No Instructions Found'],
       },
-      ingredients: {
+      sections: {
         type: Array,
         required: [true, 'No Ingredients Found'],
       },

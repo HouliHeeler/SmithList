@@ -1,18 +1,14 @@
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import GoalForm from '../components/GoalForm'
-import GoalItem from '../components/GoalItem'
-import Spinner from '../components/Spinner'
 import Header from '../components/Header'
-import RecipeList from '../components/RecipeList'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Spinner from '../components/Spinner'
+import GoalItem from '../components/GoalItem'
 import { getGoals, reset } from '../features/goals/goalSlice'
 
-function Dashboard() {
+function Controls({ setChosenRecipe }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
-  const [chosenRecipe, setChosenRecipe] = useState('')
 
   const { user } = useSelector((state) => state.auth)
   const { goals, isLoading, isError, message } = useSelector(
@@ -45,12 +41,12 @@ function Dashboard() {
       "thumbnail_url": recipeClicked[0].text[0].image,
       "name": recipeClicked[0].text[0].recipe,
       "instructions": recipeClicked[0].text[0].instructions,
-      "ingredients": recipeClicked[0].text[0].ingredients,
+      "sections": recipeClicked[0].text[0].sections,
     })
   }
 
   return (
-    <main className='main'>
+    <div>
       <Header />
       <section className='meals'>
         {goals.length > 0 ? (
@@ -63,12 +59,8 @@ function Dashboard() {
           <span>You haven't chosen any meals!</span>
         )}
       </section>
-      <section className='recipe-block'>
-        <GoalForm chosenRecipe={chosenRecipe} />
-        <RecipeList setChosenRecipe={setChosenRecipe}/>
-      </section>
-    </main>
+    </div>
   )
 }
 
-export default Dashboard
+export default Controls
