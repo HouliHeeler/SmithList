@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { createGoal } from '../features/goals/goalSlice'
 import cereal from '../app/images/cereal.jpg'
 
-function GoalForm({chosenRecipe}) {
+function GoalForm({ chosenRecipe }) {
 
   const [text, setText] = useState({
     recipe: '',

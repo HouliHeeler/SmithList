@@ -15,8 +15,6 @@ function RecipeList(props) {
 
     const filteredList = list.filter(item => item['instructions'] !== undefined).filter(item => item["sections"] !== undefined)
 
-    console.log(filteredList)
-
     const cuisines = [
       {value: "indian", label: "Indian"},
       {value: "mexican", label: "Mexican"},

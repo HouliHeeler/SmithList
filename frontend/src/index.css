@@ -136,9 +136,11 @@ ul {
 .meal-block > span {
   max-height: 2rem;
   min-width: fit-content;
+  cursor: pointer;
 }
 
 .close {
+  font-size: .5rem;
   cursor: pointer;
   border: none;
   background: none;

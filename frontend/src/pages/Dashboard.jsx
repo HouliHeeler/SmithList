@@ -39,6 +39,16 @@ function Dashboard() {
     return <Spinner />
   }
 
+  function showRecipe(id) {
+    const recipeClicked = goals.filter(recipe => recipe._id === id)
+    setChosenRecipe({
+      "thumbnail_url": recipeClicked[0].text[0].image,
+      "name": recipeClicked[0].text[0].recipe,
+      "instructions": recipeClicked[0].text[0].instructions,
+      "ingredients": recipeClicked[0].text[0].ingredients,
+    })
+  }
+
   return (
     <main className='main'>
       <Header />
@@ -46,7 +56,7 @@ function Dashboard() {
         {goals.length > 0 ? (
           <div className='meals-chosen'>
             {goals.map((goal) => (
-              <GoalItem key={goal._id} goal={goal} />
+              <GoalItem key={goal._id} goal={goal} showRecipe={showRecipe} />
             ))}
           </div>
         ) : (
@@ -54,7 +64,7 @@ function Dashboard() {
         )}
       </section>
       <section className='recipe-block'>
-        <GoalForm chosenRecipe={chosenRecipe} goals={goals} />
+        <GoalForm chosenRecipe={chosenRecipe} />
         <RecipeList setChosenRecipe={setChosenRecipe}/>
       </section>
     </main>
