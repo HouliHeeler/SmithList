@@ -1,11 +1,14 @@
 import Controls from "../components/Controls"
+import cereal from '../app/images/cereal.jpg'
 
 function Recipes({setChosenRecipe, chosenRecipe}) {
 
   let instructions = 'Add Milk. Enjoy.'
   let ingredients = 'One family sized box of your preferred cereal. One quart of milk'
+  let imgUrl = cereal
 
   if(chosenRecipe['instructions'] !== undefined) {
+    imgUrl = chosenRecipe["thumbnail_url"]
     instructions = chosenRecipe['instructions'].map((step, i) => {
       return <div key={i}>{step['display_text']}</div>
     })
@@ -25,7 +28,7 @@ function Recipes({setChosenRecipe, chosenRecipe}) {
       <section className="page-block">
         <div className="page-img-ingredients">
           <div className="page-img">
-            <img src={chosenRecipe["thumbnail_url"]} alt={chosenRecipe["name"]} />
+            <img src={imgUrl} alt={chosenRecipe["name"]} />
           </div>
           <div className="page-ingredients">
             <h3>Ingredients</h3>

@@ -310,8 +310,8 @@ input, input:focus
 
 .recipe-instructions {
   max-width: 100%;
-  min-height: 85%;
-  max-height: 85%;
+  min-height: 80%;
+  max-height: 80%;
 }
 
 .recipe-items {
@@ -461,12 +461,22 @@ input, input:focus
   border-radius: 5px;
 }
 
-.page-instructions > h3, .page-ingredients > h3 {
+.page-instructions > h3, .page-ingredients > h3, .individual-ingredients > h3 {
   text-decoration: underline;
   margin: .25rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.individual-ingredients {
+  height: calc(100% - 1rem);
+  width: 30%;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+  margin: .5rem;
+  padding: .5rem;
 }
 
 
