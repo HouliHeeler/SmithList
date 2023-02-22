@@ -493,7 +493,7 @@ input, input:focus
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80%;
+  width: 40%;
 }
 
 .add, .delete {

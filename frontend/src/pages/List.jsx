@@ -1,9 +1,10 @@
 import Controls from "../components/Controls"
-import { FaPlus, FaMinus, FaSave, FaTrash } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { getGoals, reset } from '../features/goals/goalSlice'
+import ListItem from "../components/ListItem";
 
 function List({setChosenRecipe, chosenRecipe}) {
   const navigate = useNavigate()
@@ -52,15 +53,20 @@ function List({setChosenRecipe, chosenRecipe}) {
     return initialValue || []
   })
 
-  
+  const [removedList, setRemovedList] = useState(() => {
+    const saved = sessionStorage.getItem('removedList')
+    const initialValue = JSON.parse(saved)
+    return initialValue || []
+  })  
 
   const firstDraft = []
   goals.map(recipe => recipe.text[0].sections.map(step => step.components.map(item => firstDraft.push(item.raw_text))))
+  const secondDraft = firstDraft.filter(item => !removedList.includes(item))
 
-  const [finalDraft, setFinalDraft] = useState(firstDraft)
+  const [finalDraft, setFinalDraft] = useState(secondDraft)
 
   useEffect(() => {
-    setFinalDraft([...personalList, ...firstDraft])
+    setFinalDraft([...personalList, ...secondDraft])
 
     // Disables Reacts 'missing dependency' issue
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -68,12 +74,11 @@ function List({setChosenRecipe, chosenRecipe}) {
 
   const shoppingList = finalDraft.map((item, i) => {
     return (
-      <div className="grocery-item" key={i}>
-        <FaMinus 
-          className="delete"
-          onClick={() => removeItem(item)}/>
-        <div>{item}</div>
-      </div>
+      <ListItem 
+        key={i}
+        i={i} 
+        item={item} 
+        removeItem={removeItem} />
     )
   })
 
@@ -86,7 +91,12 @@ function List({setChosenRecipe, chosenRecipe}) {
     localStorage.setItem('personalList', JSON.stringify(personalList))
   }, [personalList])
 
+  useEffect(() => {
+    sessionStorage.setItem('removedList', JSON.stringify(removedList))
+  }, [removedList])
+
   function removeItem(item) {
+    setRemovedList(list => [...list, item])
     setPersonalList(personalList.filter(el => el !== item))
   }
 
@@ -107,23 +117,19 @@ function List({setChosenRecipe, chosenRecipe}) {
             {shoppingList}
           </div>
           <div className="add-groceries">
-            <FaSave />
-            <div>
-              <input
-                type="text"
-                id="addOn"
-                name="addOn"
-                placeholder="Add groceries..." 
-                value={addOns}
-                onChange={onChange} 
-                onKeyPress={event => {
-                  if (event.key === 'Enter') {
-                    addItem()
-                  }
-                }}/>
-              <FaPlus className='add' onClick={addItem}/>
-            </div>
-            <FaTrash />
+            <input
+              type="text"
+              id="addOn"
+              name="addOn"
+              placeholder="Add groceries..." 
+              value={addOns}
+              onChange={onChange} 
+              onKeyPress={event => {
+                if (event.key === 'Enter') {
+                  addItem()
+                }
+              }}/>
+            <FaPlus className='add' onClick={addItem}/>
           </div>
         </div>
       </section>
