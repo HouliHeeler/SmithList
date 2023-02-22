@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 import logo from '../app/images/logoblack.svg'
 
-function Header() {
+function Header({ pageName }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -13,12 +13,16 @@ function Header() {
     navigate('/')
   }
 
+  const showCookbook = {display: pageName === "Cookbook" ? "none" : 'block'}
+  const showRecipes = {display: pageName === "Recipes" ? "none" : 'block'}
+  const showList = {display: pageName === "List" ? "none" : 'block'}
+
   return (
     <header className='header'>
       <ul>
-        <li><Link to='/' className='header-link'>Cookbook</Link></li>
-        <li><Link to='/recipes' className='header-link'>Recipes</Link></li>
-        <li><Link to='/list' className='header-link'>List</Link></li>
+        <li style={showCookbook} ><Link to='/' className='header-link'>Cookbook</Link></li>
+        <li style={showRecipes} ><Link to='/recipes' className='header-link'>Recipes</Link></li>
+        <li style={showList} ><Link to='/list' className='header-link'>List</Link></li>
       </ul>
       <img src={logo} alt="SmithList Logo" />
       <button className='header-btn' onClick={onLogout}>

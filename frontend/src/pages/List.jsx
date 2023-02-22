@@ -102,7 +102,7 @@ function List({setChosenRecipe, chosenRecipe}) {
 
   return (
     <main className='main'>
-      <Controls setChosenRecipe={setChosenRecipe} chosenRecipe={chosenRecipe} />
+      <Controls pageName="List" setChosenRecipe={setChosenRecipe} chosenRecipe={chosenRecipe} />
       <section className="page-block">
         <div className="individual-ingredients">
           <h3>Recipe Ingredients</h3>

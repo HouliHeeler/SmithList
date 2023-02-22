@@ -6,7 +6,7 @@ import Spinner from '../components/Spinner'
 import GoalItem from '../components/GoalItem'
 import { getGoals, reset } from '../features/goals/goalSlice'
 
-function Controls({ setChosenRecipe, chosenRecipe }) {
+function Controls({ pageName, setChosenRecipe, chosenRecipe }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -48,7 +48,7 @@ function Controls({ setChosenRecipe, chosenRecipe }) {
 
   return (
     <div>
-      <Header />
+      <Header pageName={pageName}/>
       <section className='meals'>
         {goals.length > 0 ? (
           <div className='meals-chosen'>

@@ -56,9 +56,7 @@ function GoalForm({ chosenRecipe }) {
   return (
     <section className='recipe'>
       <div className='recipe-header'>
-        <div className='recipe-name'>
-          <span>{chosenRecipe === '' ? "Cereal" : chosenRecipe["name"]}</span>
-        </div>
+        <span>{chosenRecipe === '' ? "Cereal" : chosenRecipe["name"]}</span>
         <button 
           className='btn' 
           type='submit' 
