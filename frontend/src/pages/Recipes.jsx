@@ -24,7 +24,7 @@ function Recipes({setChosenRecipe, chosenRecipe}) {
 
   return (
     <main className='main'>
-      <Controls setChosenRecipe={setChosenRecipe} />
+      <Controls setChosenRecipe={setChosenRecipe} chosenRecipe={chosenRecipe}/>
       <section className="page-block">
         <div className="page-img-ingredients">
           <div className="page-img">

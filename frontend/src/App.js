@@ -10,7 +10,11 @@ import { useState } from 'react'
 
 function App() {
 
-  const [chosenRecipe, setChosenRecipe] = useState('')
+  const [chosenRecipe, setChosenRecipe] = useState(() => {
+    const saved = localStorage.getItem('chosenRecipe')
+    const initialValue = JSON.parse(saved)
+    return initialValue || ''
+  })
 
   return (
     <>

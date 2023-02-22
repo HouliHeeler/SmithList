@@ -46,34 +46,53 @@ function List({setChosenRecipe, chosenRecipe}) {
     setAddOns(e.target.value)
   }
 
+  const [personalList, setPersonalList] = useState(() => {
+    const saved = localStorage.getItem('personalList')
+    const initialValue = JSON.parse(saved)
+    return initialValue || []
+  })
+
+  
+
   const firstDraft = []
   goals.map(recipe => recipe.text[0].sections.map(step => step.components.map(item => firstDraft.push(item.raw_text))))
 
   const [finalDraft, setFinalDraft] = useState(firstDraft)
 
+  useEffect(() => {
+    setFinalDraft([...personalList, ...firstDraft])
+
+    // Disables Reacts 'missing dependency' issue
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [personalList, goals])
+
   const shoppingList = finalDraft.map((item, i) => {
     return (
-      <div className="grocery-item" >
+      <div className="grocery-item" key={i}>
         <FaMinus 
           className="delete"
           onClick={() => removeItem(item)}/>
-        <div key={i}>{item}</div>
+        <div>{item}</div>
       </div>
     )
   })
 
   function addItem() {
-    setFinalDraft(prevList => ([addOns, ...prevList]))
+    setPersonalList(prevList => ([addOns, ...prevList]))
     setAddOns('')
   }
 
+  useEffect(() => {
+    localStorage.setItem('personalList', JSON.stringify(personalList))
+  }, [personalList])
+
   function removeItem(item) {
-    setFinalDraft(finalDraft.filter(el => el !== item))
+    setPersonalList(personalList.filter(el => el !== item))
   }
 
   return (
     <main className='main'>
-      <Controls setChosenRecipe={setChosenRecipe} />
+      <Controls setChosenRecipe={setChosenRecipe} chosenRecipe={chosenRecipe} />
       <section className="page-block">
         <div className="individual-ingredients">
           <h3>Recipe Ingredients</h3>

@@ -6,7 +6,7 @@ import Spinner from '../components/Spinner'
 import GoalItem from '../components/GoalItem'
 import { getGoals, reset } from '../features/goals/goalSlice'
 
-function Controls({ setChosenRecipe }) {
+function Controls({ setChosenRecipe, chosenRecipe }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -43,6 +43,7 @@ function Controls({ setChosenRecipe }) {
       "instructions": recipeClicked[0].text[0].instructions,
       "sections": recipeClicked[0].text[0].sections,
     })
+    localStorage.setItem('chosenRecipe', JSON.stringify(chosenRecipe))
   }
 
   return (

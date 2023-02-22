@@ -5,7 +5,7 @@ import RecipeList from '../components/RecipeList'
 function Cookbook({setChosenRecipe, chosenRecipe}) {
   return (
     <main className='main'>
-      <Controls setChosenRecipe={setChosenRecipe} />
+      <Controls setChosenRecipe={setChosenRecipe} chosenRecipe={chosenRecipe} />
       <section className='recipe-block'>
         <GoalForm chosenRecipe={chosenRecipe} />
         <RecipeList setChosenRecipe={setChosenRecipe}/>

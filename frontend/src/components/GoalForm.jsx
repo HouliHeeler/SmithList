@@ -45,7 +45,6 @@ function GoalForm({ chosenRecipe }) {
   const handleClick = (e) => {
     e.preventDefault()
     dispatch(createGoal({ text }))
-    console.log(text)
   }
 
   function toggle(bool) {
