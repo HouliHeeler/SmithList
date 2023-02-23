@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
+import { cuisines } from '../app/constants'
 import Select from 'react-select'
 
 function RecipeList(props) {
@@ -15,14 +16,7 @@ function RecipeList(props) {
 
     const filteredList = list.filter(item => item['instructions'] !== undefined).filter(item => item["sections"] !== undefined)
 
-    const cuisines = [
-      {value: "indian", label: "Indian"},
-      {value: "mexican", label: "Mexican"},
-      {value: "italian", label: "Italian"},
-      {value: "thai", label: "Thai"},
-      {value: "french", label: "French"},
-      {value: "british", label: "British"}
-    ]
+    
 
     const [cuisine, setCuisine] = useState('')
 
@@ -31,7 +25,14 @@ function RecipeList(props) {
     }
 
     async function getRecipes(prefix, cuisine) {
-      fetch(`https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=${cuisine}&q=${prefix}`, {
+      let searchParams;
+      
+      if(query === '') {
+        searchParams = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=${cuisine}`
+      }else {
+        searchParams = `https://tasty.p.rapidapi.com/recipes/list?from=0&size=20&tags=${cuisine}&q=${prefix}`
+      }
+      fetch(searchParams, {
           method: 'GET',
           headers: {
             'X-RapidAPI-Key': '81f0f8a38bmsh024375d5af83615p170190jsnee4713d76fa2',

@@ -1,0 +1,15 @@
+export const cuisines = [
+    {value: "indian", label: "Indian"},
+    {value: "mexican", label: "Mexican"},
+    {value: "italian", label: "Italian"},
+    {value: "thai", label: "Thai"},
+    {value: "french", label: "French"},
+    {value: "english", label: "English"},
+    {value: "greek", label: "Greek"},
+    {value: "american", label: "American"},
+    {value: "chinese", label: "Chinese"},
+    {value: "vietnamese", label: "Vietnamese"},
+    {value: "spanish", label: "Spanish"},
+    {value: "korean", label: "Korean"},
+    {value: "german", label: "German"},
+  ]
