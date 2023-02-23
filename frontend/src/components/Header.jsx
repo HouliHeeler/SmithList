@@ -13,6 +13,7 @@ function Header({ pageName }) {
     navigate('/')
   }
 
+  //Conditional Styling to only display Links of the page not currently served
   const showCookbook = {display: pageName === "Cookbook" ? "none" : 'block'}
   const showRecipes = {display: pageName === "Recipes" ? "none" : 'block'}
   const showList = {display: pageName === "List" ? "none" : 'block'}

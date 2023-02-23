@@ -35,6 +35,7 @@ function Controls({ pageName, setChosenRecipe, chosenRecipe }) {
     return <Spinner />
   }
 
+  //Passes information for recipe clicked by user into localStorage, and up to App.js
   function showRecipe(id) {
     const recipeClicked = recipes.filter(recipe => recipe._id === id)
     setChosenRecipe({

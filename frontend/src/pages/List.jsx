@@ -31,6 +31,7 @@ function List({setChosenRecipe, chosenRecipe}) {
     }
   }, [user, navigate, isError, message, dispatch])
 
+  //Pulls ingredients from chosen recipe to be shown
   let ingredients;
   
   if(chosenRecipe['sections'] !== undefined) {
@@ -39,12 +40,6 @@ function List({setChosenRecipe, chosenRecipe}) {
     ingredients = componentArray.map((item, i) => {
       return <div key={i}>{item}</div>
     })
-  }
-
-  const [addOns, setAddOns] = useState("")
-
-  const onChange = (e) => {
-    setAddOns(e.target.value)
   }
 
   const [personalList, setPersonalList] = useState(() => {
@@ -65,6 +60,7 @@ function List({setChosenRecipe, chosenRecipe}) {
 
   const [finalDraft, setFinalDraft] = useState(secondDraft)
 
+  //Combines personal list and recipes list after having removed list filtered out to create final grocery list
   useEffect(() => {
     setFinalDraft([...personalList, ...secondDraft])
 
@@ -76,17 +72,24 @@ function List({setChosenRecipe, chosenRecipe}) {
     return (
       <ListItem 
         key={i}
-        i={i} 
         item={item} 
         removeItem={removeItem} />
     )
   })
+
+  //Allows user to add in items to shopping list
+  const [addOns, setAddOns] = useState("")
+
+  const onChange = (e) => {
+    setAddOns(e.target.value)
+  }
 
   function addItem() {
     setPersonalList(prevList => ([addOns, ...prevList]))
     setAddOns('')
   }
 
+  //Updates localStorage of personalList and removedList when they are changed
   useEffect(() => {
     localStorage.setItem('personalList', JSON.stringify(personalList))
   }, [personalList])
@@ -95,6 +98,7 @@ function List({setChosenRecipe, chosenRecipe}) {
     sessionStorage.setItem('removedList', JSON.stringify(removedList))
   }, [removedList])
 
+  //Delete item functions by building a list of items to be filtered out of the shopping list
   function removeItem(item) {
     setRemovedList(list => [...list, item])
     setPersonalList(personalList.filter(el => el !== item))

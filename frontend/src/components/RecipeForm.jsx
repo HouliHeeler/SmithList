@@ -5,6 +5,7 @@ import cereal from '../app/images/cereal.jpg'
 
 function RecipeForm({ chosenRecipe }) {
 
+  //Data used to fill out many places on the site
   const [text, setText] = useState({
     recipe: '',
     instructions: [],
@@ -38,14 +39,16 @@ function RecipeForm({ chosenRecipe }) {
     })
   }
   
-  const [information, setInformation] = useState(true)
-
+  //Adds selected recipe to MongoDB database
   const dispatch = useDispatch()
 
   const handleClick = (e) => {
     e.preventDefault()
     dispatch(createRecipe({ text }))
   }
+
+  //Sets state and allows user to toggle between seeing Ingredients or Instructions on Cookbook page
+  const [information, setInformation] = useState(true)
 
   function toggle(bool) {
     setInformation(bool)

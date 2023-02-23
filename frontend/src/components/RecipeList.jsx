@@ -5,6 +5,7 @@ import Select from 'react-select'
 
 function RecipeList(props) {
     
+    //Uses search input to create a tag used in fetch function
     const [query, setQuery] = useState('')
     const prefix = query.split(" ").join("%20")
 
@@ -16,14 +17,13 @@ function RecipeList(props) {
 
     const filteredList = list.filter(item => item['instructions'] !== undefined).filter(item => item["sections"] !== undefined)
 
-    
-
     const [cuisine, setCuisine] = useState('')
 
     const onChange = (e) => {
       setCuisine(e.value)
     }
 
+    //Uses search query and cuisine choice to allow user to look up recipes
     async function getRecipes(prefix, cuisine) {
       let searchParams;
       
