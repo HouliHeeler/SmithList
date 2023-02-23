@@ -10,6 +10,7 @@ import { useState } from 'react'
 
 function App() {
 
+  //Stores selected recipe in State to be passed down throughout app
   const [chosenRecipe, setChosenRecipe] = useState(() => {
     const saved = localStorage.getItem('chosenRecipe')
     const initialValue = JSON.parse(saved)
