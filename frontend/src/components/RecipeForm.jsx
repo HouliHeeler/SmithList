@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
-import { createGoal } from '../features/goals/goalSlice'
+import { createRecipe } from '../features/recipes/recipeSlice'
 import cereal from '../app/images/cereal.jpg'
 
-function GoalForm({ chosenRecipe }) {
+function RecipeForm({ chosenRecipe }) {
 
   const [text, setText] = useState({
     recipe: '',
@@ -44,7 +44,7 @@ function GoalForm({ chosenRecipe }) {
 
   const handleClick = (e) => {
     e.preventDefault()
-    dispatch(createGoal({ text }))
+    dispatch(createRecipe({ text }))
   }
 
   function toggle(bool) {
@@ -83,4 +83,4 @@ function GoalForm({ chosenRecipe }) {
   )
 }
 
-export default GoalForm
+export default RecipeForm

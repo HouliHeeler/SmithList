@@ -45,7 +45,6 @@ function RecipeList(props) {
           throw new Error("ERROR (response not ok)");
         })
         .then((data) => {
-          console.log(data.results)
           setList(data.results)
           localStorage.setItem('list', JSON.stringify(data.results))
         })

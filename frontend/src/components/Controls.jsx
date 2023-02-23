@@ -3,16 +3,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Spinner from '../components/Spinner'
-import GoalItem from '../components/GoalItem'
-import { getGoals, reset } from '../features/goals/goalSlice'
+import RecipeItem from '../components/RecipeItem'
+import { getRecipes, reset } from '../features/recipes/recipeSlice'
 
 function Controls({ pageName, setChosenRecipe, chosenRecipe }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
   const { user } = useSelector((state) => state.auth)
-  const { goals, isLoading, isError, message } = useSelector(
-    (state) => state.goals
+  const { recipes, isLoading, isError, message } = useSelector(
+    (state) => state.recipes
   )
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function Controls({ pageName, setChosenRecipe, chosenRecipe }) {
       navigate('/login')
     }
 
-    dispatch(getGoals())
+    dispatch(getRecipes())
 
     return () => {
       dispatch(reset())
@@ -36,7 +36,7 @@ function Controls({ pageName, setChosenRecipe, chosenRecipe }) {
   }
 
   function showRecipe(id) {
-    const recipeClicked = goals.filter(recipe => recipe._id === id)
+    const recipeClicked = recipes.filter(recipe => recipe._id === id)
     setChosenRecipe({
       "thumbnail_url": recipeClicked[0].text[0].image,
       "name": recipeClicked[0].text[0].recipe,
@@ -50,10 +50,10 @@ function Controls({ pageName, setChosenRecipe, chosenRecipe }) {
     <div>
       <Header pageName={pageName}/>
       <section className='meals'>
-        {goals.length > 0 ? (
+        {recipes.length > 0 ? (
           <div className='meals-chosen'>
-            {goals.map((goal) => (
-              <GoalItem key={goal._id} goal={goal} showRecipe={showRecipe} />
+            {recipes.map((recipe) => (
+              <RecipeItem key={recipe._id} recipe={recipe} showRecipe={showRecipe} />
             ))}
           </div>
         ) : (

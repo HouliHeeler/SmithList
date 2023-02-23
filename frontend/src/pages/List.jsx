@@ -3,7 +3,7 @@ import { FaPlus } from 'react-icons/fa';
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { getGoals, reset } from '../features/goals/goalSlice'
+import { getRecipes, reset } from '../features/recipes/recipeSlice'
 import ListItem from "../components/ListItem";
 
 function List({setChosenRecipe, chosenRecipe}) {
@@ -11,8 +11,8 @@ function List({setChosenRecipe, chosenRecipe}) {
   const dispatch = useDispatch()
 
   const { user } = useSelector((state) => state.auth)
-  const { goals, isError, message } = useSelector(
-    (state) => state.goals
+  const { recipes, isError, message } = useSelector(
+    (state) => state.recipes
   )
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function List({setChosenRecipe, chosenRecipe}) {
       navigate('/login')
     }
 
-    dispatch(getGoals())
+    dispatch(getRecipes())
 
     return () => {
       dispatch(reset())
@@ -60,7 +60,7 @@ function List({setChosenRecipe, chosenRecipe}) {
   })  
 
   const firstDraft = []
-  goals.map(recipe => recipe.text[0].sections.map(step => step.components.map(item => firstDraft.push(item.raw_text))))
+  recipes.map(recipe => recipe.text[0].sections.map(step => step.components.map(item => firstDraft.push(item.raw_text))))
   const secondDraft = firstDraft.filter(item => !removedList.includes(item))
 
   const [finalDraft, setFinalDraft] = useState(secondDraft)
@@ -70,7 +70,7 @@ function List({setChosenRecipe, chosenRecipe}) {
 
     // Disables Reacts 'missing dependency' issue
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [personalList, goals])
+  }, [personalList, recipes])
 
   const shoppingList = finalDraft.map((item, i) => {
     return (

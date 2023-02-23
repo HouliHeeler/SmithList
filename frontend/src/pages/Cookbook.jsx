@@ -1,5 +1,5 @@
 import Controls from '../components/Controls'
-import GoalForm from '../components/GoalForm'
+import RecipeForm from '../components/RecipeForm'
 import RecipeList from '../components/RecipeList'
 
 function Cookbook({setChosenRecipe, chosenRecipe}) {
@@ -7,7 +7,7 @@ function Cookbook({setChosenRecipe, chosenRecipe}) {
     <main className='main'>
       <Controls pageName="Cookbook" setChosenRecipe={setChosenRecipe} chosenRecipe={chosenRecipe} />
       <section className='recipe-block'>
-        <GoalForm chosenRecipe={chosenRecipe} />
+        <RecipeForm chosenRecipe={chosenRecipe} />
         <RecipeList setChosenRecipe={setChosenRecipe}/>
       </section>
     </main>
