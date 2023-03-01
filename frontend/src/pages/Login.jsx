@@ -51,6 +51,17 @@ function Login() {
     dispatch(login(userData))
   }
 
+  const browse = (e) => {
+    e.preventDefault()
+
+    const userData = {
+        email: "test@user.com", 
+        password: "1234",
+    }
+
+    dispatch(login(userData))
+  }
+
   if (isLoading) {
     return <Spinner />
   }
@@ -86,6 +97,7 @@ function Login() {
             <button type='submit' className='btn btn-block'>
               Login
             </button>
+            <button onClick={browse} className='btn btn-block'>Just Looking?</button>
             <span>
               <Link to='/register'>
                 Register
